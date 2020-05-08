@@ -8,7 +8,6 @@ public class GestionstageApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(GestionstageApplication.class, args);
-		//this is a comment
 	}
 
 }
