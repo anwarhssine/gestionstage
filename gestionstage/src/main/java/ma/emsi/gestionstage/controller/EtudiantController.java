@@ -42,6 +42,7 @@ public class EtudiantController {
 		e.setAdresse(new_etudiant.getAdresse());
 		e.setTele(new_etudiant.getTele());
 		e.setFiliere(new_etudiant.getFiliere());
+		e.setGroupe(new_etudiant.getGroupe());
 		repo.save(e);
 	}
 	
