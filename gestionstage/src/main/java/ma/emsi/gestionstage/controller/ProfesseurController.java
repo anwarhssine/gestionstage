@@ -43,6 +43,7 @@ public class ProfesseurController {
 		p.setPrenom(prof.getPrenom());
 		p.setAdresse(prof.getAdresse());
 		p.setTele(prof.getTele());
+		p.setJury(prof.getJury());
 		repo.save(p);
 	}
 	
