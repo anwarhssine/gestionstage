@@ -2,12 +2,14 @@ package ma.emsi.gestionstage.entity;
 
 import java.util.Date;
 
+import javax.persistence.CascadeType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.MappedSuperclass;
+import javax.persistence.OneToOne;
 
 @MappedSuperclass
 public class Projet {
@@ -20,8 +22,12 @@ public class Projet {
 	@ManyToOne
 	@JoinColumn(name="id_encadrant")
 	private Professeur encadrant;
-	
 	private Date date_soutenance;
+
+	@OneToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name="jury_id")
+	private Jury jury;
+	
 	
 	public int getId() {
 		return id;

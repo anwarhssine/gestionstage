@@ -2,11 +2,7 @@ package ma.emsi.gestionstage.entity;
 
 import java.util.List;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.*;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
@@ -19,6 +15,8 @@ public class Jury {
 	@JsonIgnore
 	private List<Professeur> professeurs;
 	
+	@OneToOne(mappedBy = "jury")
+	private Projet projet;
 	
 	public int getId() {
 		return id;

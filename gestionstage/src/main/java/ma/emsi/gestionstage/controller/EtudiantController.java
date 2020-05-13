@@ -46,4 +46,9 @@ public class EtudiantController {
 		repo.save(e);
 	}
 	
+	@GetMapping("/etudiant/findbyprenom/{prenom}")
+	public List<Etudiant> findByPrenom(@PathVariable(required=true) String prenom){
+		return repo.findByPrenom(prenom);
+	}
+	
 }
