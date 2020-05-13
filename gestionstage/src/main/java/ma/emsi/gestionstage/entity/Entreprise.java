@@ -1,9 +1,8 @@
 package ma.emsi.gestionstage.entity;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import java.util.List;
+
+import javax.persistence.*;
 
 @Entity
 public class Entreprise {
@@ -16,6 +15,9 @@ public class Entreprise {
 	private String tel;
 	private String fax;
 	private String nom_responsable_rh;
+	
+	@OneToMany(mappedBy = "entreprise")
+	private List<EncadrantEntreprise> encadrants;
 	
 	public String getRaison_sociale() {
 		return raison_sociale;
@@ -67,5 +69,15 @@ public class Entreprise {
 	
 	public int getId() {
 		return id;
+	}
+
+	public List<EncadrantEntreprise> getEncadrants() {
+		return encadrants;
+	}
+
+	public void setEncadrants(List<EncadrantEntreprise> encadrants) {
+		this.encadrants = encadrants;
 	}	
+	
+	
 }

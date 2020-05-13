@@ -18,12 +18,25 @@ public class GroupeEtudiant {
 	private int id;
 	private String libelle;
 	
-	public int getId() {
-		return id;
+
+	@OneToMany(mappedBy = "groupe", cascade = {CascadeType.ALL})
+	@JsonIgnore
+	private List<Etudiant> etudiants;
+	
+	@OneToMany(mappedBy = "groupe", cascade = {CascadeType.ALL})
+	@JsonIgnore
+	private List<Projet> projets;
+	
+	public List<Etudiant> getEtudiants() {
+		return etudiants;
 	}
 
-	public void setId(int id) {
-		this.id = id;
+	public void setEtudiants(List<Etudiant> etudiants) {
+		this.etudiants = etudiants;
+	}
+
+	public int getId() {
+		return id;
 	}
 
 	public String getLibelle() {
@@ -34,29 +47,13 @@ public class GroupeEtudiant {
 		this.libelle = libelle;
 	}
 
-	public List<PFA> getPfa() {
-		return pfa;
+	public List<Projet> getProjets() {
+		return projets;
 	}
 
-	public void setPfa(List<PFA> pfa) {
-		this.pfa = pfa;
+	public void setProjets(List<Projet> projets) {
+		this.projets = projets;
 	}
 
-	@OneToMany(mappedBy = "groupe", cascade = {CascadeType.ALL})
-	@JsonIgnore
-	private List<Etudiant> etudiants;
-	
-	@OneToMany(mappedBy = "groupe", cascade = {CascadeType.ALL})
-	@JsonIgnore
-	private List<PFA> pfa;
-
-	public List<Etudiant> getEtudiants() {
-		return etudiants;
-	}
-
-	public void setEtudiants(List<Etudiant> etudiants) {
-		this.etudiants = etudiants;
-	}
-	
 	
 }

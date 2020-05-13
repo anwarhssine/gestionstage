@@ -2,14 +2,7 @@ package ma.emsi.gestionstage.entity;
 
 import java.util.Date;
 
-import javax.persistence.CascadeType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.MappedSuperclass;
-import javax.persistence.OneToOne;
+import javax.persistence.*;
 
 @MappedSuperclass
 public class Projet {
@@ -21,12 +14,21 @@ public class Projet {
 	private String sujet;
 	@ManyToOne
 	@JoinColumn(name="id_encadrant")
-	private Professeur encadrant;
+	private Professeur encadrant_pedagogique;
 	private Date date_soutenance;
 
 	@OneToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name="jury_id")
 	private Jury jury;
+	
+	@ManyToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name="id_responsable_filiere")
+	private ResponsableFiliere responsable_filiere;
+	
+	@ManyToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name="id_groupe")
+	private GroupeEtudiant groupe;
+		
 	
 	
 	public int getId() {
@@ -59,12 +61,31 @@ public class Projet {
 	public void setSujet(String sujet) {
 		this.sujet = sujet;
 	}
-	public Professeur getEncadrant() {
-		return encadrant;
+	public Professeur getEncadrant_pedagogique() {
+		return encadrant_pedagogique;
 	}
-	public void setEncadrant(Professeur encadrant) {
-		this.encadrant = encadrant;
+	public void setEncadrant_pedagogique(Professeur encadrant_pedagogique) {
+		this.encadrant_pedagogique = encadrant_pedagogique;
 	}
+	public Jury getJury() {
+		return jury;
+	}
+	public void setJury(Jury jury) {
+		this.jury = jury;
+	}
+	public ResponsableFiliere getResponsable_filiere() {
+		return responsable_filiere;
+	}
+	public void setResponsable_filiere(ResponsableFiliere responsable_filiere) {
+		this.responsable_filiere = responsable_filiere;
+	}
+	public GroupeEtudiant getGroupe() {
+		return groupe;
+	}
+	public void setGroupe(GroupeEtudiant groupe) {
+		this.groupe = groupe;
+	}
+
 	
 	
 	

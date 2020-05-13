@@ -1,5 +1,7 @@
 package ma.emsi.gestionstage.entity;
 
+import java.util.List;
+
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -23,7 +25,7 @@ public class EncadrantEntreprise {
 	private Entreprise entreprise;
 	
 	@OneToMany(mappedBy = "encadrant_entreprise")
-	private Stage stage;
+	private List<Stage> stages;
 	
 	
 	public String getNom() {
@@ -59,6 +61,12 @@ public class EncadrantEntreprise {
 	
 	public int getId() {
 		return id;
+	}
+	public List<Stage> getStages() {
+		return stages;
+	}
+	public void setStages(List<Stage> stages) {
+		this.stages = stages;
 	}
 	
 	
